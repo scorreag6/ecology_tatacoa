@@ -1,0 +1,48 @@
+RESULTADOS DEL ANÁLISIS ECOLÓGICO
+
+1. Estadísticas Descriptivas:
+# A tibble: 2 × 6
+  tipo_zona         n media_interior sd_interior media_elevation sd_elevation
+  <chr>         <int>          <dbl>       <dbl>           <dbl>        <dbl>
+1 isla_interior    30           8.18        4.38            378.         151.
+2 sin_isla         28          20.4        15.7             390.         138.
+
+2. Test de Normalidad:
+# A tibble: 2 × 3
+  tipo_zona     shapiro_stat shapiro_p
+  <chr>                <dbl>     <dbl>
+1 isla_interior        0.941    0.0992
+2 sin_isla             0.911    0.0212
+
+3. Resultados Kruskal-Wallis:
+
+	Kruskal-Wallis rank sum test
+
+data:  interior by tipo_zona
+Kruskal-Wallis chi-squared = 7.8304, df = 1, p-value = 0.005137
+
+
+4. Pruebas post-hoc de Dunn:
+# A tibble: 1 × 9
+  .y.      group1        group2      n1    n2 statistic       p   p.adj p.adj.signif
+* <chr>    <chr>         <chr>    <int> <int>     <dbl>   <dbl>   <dbl> <chr>       
+1 interior isla_interior sin_isla    30    28      2.80 0.00514 0.00514 **          
+
+5. Correlación Spearman:
+
+	Spearman's rank correlation rho
+
+data:  datos_cor$interior and datos_cor$Elevation
+S = 32416, p-value = 0.983
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+        rho 
+0.002868513 
+
+
+6. Resumen de especies por zona:
+# A tibble: 2 × 6
+  tipo_zona       Pela Mosquero Cabecinegro Palo_Santo Cruceto
+  <chr>          <dbl>    <dbl>       <dbl>      <dbl>   <dbl>
+1 isla_interior 3        0.0667        1.73        0.1    2.57
+2 sin_isla      0.0357   0             0           0      0   
